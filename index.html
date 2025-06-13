@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Monde de Ghalia 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* Ajout pour petit écran */
+@media screen and (max-width: 599px) {
+  .intro {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 5vw;
+  }
+}
+
+</style>
+<body>
+  <header>
+    <h1>Le Monde de Ghalia 💐</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html">Galerie</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h2>Bienvenue dans mon univers</h2>
+    <p>Je m'appelle Dawson. Ce site est pour la femme que j'aime 💕</p>
+  </section>
+    <section class="intro">
+      <h3>Ghalia mon amour je t'aime</h3>
+      <p>
+        Je n’ai pas toujours su trouver les mots,
+Parfois, mes silences ont jeté de l’ombre,
+Et j’ai vu ton regard devenir plus clos,
+Quand tout ce que je voulais, c'était te combler sans nombre.
+<br>
+Je n’ai pas voulu blesser, je te le jure,
+Mais l’amour trébuche même quand il est pur.
+J’ai été maladroit, un peu trop distant,
+Alors que ton amour, lui, restait constant.
+<br>
+Pardon pour mes erreurs, mes instants de froid,
+Pour chaque soupir, chaque larme en toi.
+Je suis humain, perdu parfois,
+Mais mon cœur, lui, ne pense qu’à toi.
+<br>
+Je n’écris pas juste pour apaiser ta peine,
+Mais pour te dire que ton absence m’enchaîne.
+Et si tu me tends encore la main,
+Je jure de la garder jusqu’à la fin.
+<br>
+Car t’aimer est plus qu’un choix,
+C’est ma nature, c’est ce qui me tient droit.
+Alors pardonne mes fautes, mes absences,
+Et redonne à notre histoire sa chance.
+
+
+      </p>
+    </section>
+  
+
+   <!-- Lecteur audio caché avec bouton -->
+  <audio id="musique" autoplay loop>
+    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l’audio HTML5.
+  </audio>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <button onclick="toggleAudio()">🎵 Activer / Couper le son</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Ghalia. Tous droits réservés.
+  </footer>
+
+  <script>
+    function toggleAudio() {
+      const audio = document.getElementById("musique");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>

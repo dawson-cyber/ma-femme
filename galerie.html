@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie de Ghalia 📸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    @media screen and (min-width: 600px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+
+      nav a {
+        font-size: 1.2em;
+      }
+
+      footer {
+        font-size: 1em;
+      }
+    }
+
+    @media screen and (max-width: 599px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 5vw;
+      }
+    }
+</style>
+<body>
+  <header>
+    <h1>Galerie de souvenirs 📷</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html">Galerie</a>
+    </nav>
+  </header>
+
+  <section class="gallery">
+    <img src="WhatsApp Image 2025-06-13 at 16.24.29.jpeg" alt="Souvenir 1">
+    <img src="WhatsApp Image 2025-06-13 at 16.24.32.jpeg" alt="Souvenir 2">
+    <img src="WhatsApp Image 2025-06-13 at 16.24.35.jpeg" alt="Souvenir 3">
+    <img src="WhatsApp Image 2025-06-13 at 16.24.36.jpeg" alt="Souvenir 4">
+    <img src="WhatsApp Image 2025-06-13 a 16.49.47.jpeg" alt="Souvenir 5">
+    <img src="WhatsApp Image 2025-06-13 at 16.49.47.jpeg" alt="Souvenir 6">
+    <!-- Ajoute autant d’images que tu veux -->
+  </section>
+
+   <!-- Lecteur audio caché avec bouton -->
+  <audio id="musique" autoplay loop>
+    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l’audio HTML5.
+  </audio>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <button onclick="toggleAudio()">🎵 Activer / Couper le son</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Ghalia. Tous droits réservés.
+  </footer>
+
+  <script>
+    function toggleAudio() {
+      const audio = document.getElementById("musique");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+</body>
+</html>
