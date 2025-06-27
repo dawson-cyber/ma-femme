@@ -3,102 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <title>Le Monde de Ghalia 💖</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<style>
-    /* Ajout pour petit écran */
-@media screen and (max-width: 599px) {
-  .intro {
-    margin: 20px 10px;
-    padding: 15px;
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  button {
-    width: 90%;
-    max-width: 300px;
-  }
+    header {
+      background-color: #ffccd5;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    header h1 {
+      font-size: 24px;
+      color: #d63384;
+    }
 
-  nav a {
-    font-size: 5vw;
-  }
-}
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
 
-</style>
-<body>
-  <header>
-    <h1>Le Monde de Ghalia 💐</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="galerie.html">Galerie</a>
-    </nav>
-  </header>
+    nav a:hover {
+      color: #800f2f;
+    }
 
-  <section class="intro">
-    <h2>Bienvenue dans mon univers</h2>
-    <p>Je m'appelle Dawson. Ce site est pour la femme que j'aime 💕</p>
-  </section>
-    <section class="intro">
-      <h3>Ghalia mon amour je t'aime</h3>
-      <p>
-        Je n’ai pas toujours su trouver les mots,
-Parfois, mes silences ont jeté de l’ombre,
-Et j’ai vu ton regard devenir plus clos,
-Quand tout ce que je voulais, c'était te combler sans nombre.
-<br>
-Je n’ai pas voulu blesser, je te le jure,
-Mais l’amour trébuche même quand il est pur.
-J’ai été maladroit, un peu trop distant,
-Alors que ton amour, lui, restait constant.
-<br>
-Pardon pour mes erreurs, mes instants de froid,
-Pour chaque soupir, chaque larme en toi.
-Je suis humain, perdu parfois,
-Mais mon cœur, lui, ne pense qu’à toi.
-<br>
-Je n’écris pas juste pour apaiser ta peine,
-Mais pour te dire que ton absence m’enchaîne.
-Et si tu me tends encore la main,
-Je jure de la garder jusqu’à la fin.
-<br>
-Car t’aimer est plus qu’un choix,
-C’est ma nature, c’est ce qui me tient droit.
-Alors pardonne mes fautes, mes absences,
-Et redonne à notre histoire sa chance.
+    .intro, .form-section, .messages {
+      padding: 20px;
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: #ffe4e1;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease;
+    }
 
+    .intro h2, .intro h3 {
+      color: #d63384;
+    }
 
-      </p>
-    </section>
-  
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
 
-   <!-- Lecteur audio caché avec bouton -->
-  <audio id="musique" autoplay loop>
-    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas l’audio HTML5.
-  </audio>
+    button:hover {
+      background-color: #800f2f;
+    }
 
-  <div style="text-align:center; margin-top: 20px;">
-    <button onclick="toggleAudio()">🎵 Activer / Couper le son</button>
-  </div>
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #d63384;
+      margin-bottom: 10px;
+      resize: none;
+    }
 
-  <footer>
-    &copy; 2025 Ghalia. Tous droits réservés.
-  </footer>
+    .message {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #ffccd5;
+      border-radius: 10px;
+      animation: pop 0.5s ease;
+    }
 
-  <script>
-    function toggleAudio() {
-      const audio = document.getElementById("musique");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffccd5;
+      margin-top: 30px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* Animation fade-in */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animation pop */
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 599px) {
+      header, .intro, .form-section, .messages {
+        padding: 15px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 5vw;
+      }
+
+      button {
+        width: 100%;
       }
     }
-  </script>
+
+    /* Cœurs flottants */
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Le Monde de Ghalia 💐</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="galerie.html">Galerie</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <h2>Bienvenue dans mon univers</h2>
+  <p>Je m'appelle Dawson. Ce site est pour la femme que j'aime 💕</p>
+</section>
+
+<section class="intro">
+  <h3>Ghalia mon amour je t'aime</h3>
+  <p>
+    Je n’ai pas toujours su trouver les mots...<br><br>
+    Car t’aimer est plus qu’un choix,<br>
+    C’est ma nature, c’est ce qui me tient droit.<br>
+    Alors pardonne mes fautes, mes absences,<br>
+    Et redonne à notre histoire sa chance.
+  </p>
+</section>
+
+<audio id="musique" autoplay loop>
+  <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+  Votre navigateur ne supporte pas l’audio HTML5.
+</audio>
+
+<div style="text-align:center; margin-top: 20px;">
+  <button onclick="toggleAudio()">🎵 Activer / Couper le son</button>
+</div>
+
+<!-- Formulaire pour laisser un message -->
+<section class="form-section">
+  <h3>Exprimes ce que tu veux bby 💬</h3>
+  <textarea id="userMessage" placeholder="Écrivez ce que vous ressentez ici..."></textarea><br>
+  <button onclick="addMessage()">Envoyer</button>
+</section>
+
+<!-- Affichage des messages -->
+<div class="messages" id="messageContainer">
+  <h4>Messages 💌</h4>
+</div>
+
+<footer>
+  &copy; 2025 Ghalia. Tous droits réservés.
+</footer>
+
+<!-- Coeurs générés -->
+<script>
+  // Gestion audio
+  function toggleAudio() {
+    const audio = document.getElementById("musique");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Chargement des messages
+  window.onload = function() {
+    const savedMessages = JSON.parse(localStorage.getItem('ghaliaMessages')) || [];
+    savedMessages.forEach(msg => {
+      displayMessage(msg);
+    });
+
+    // Générer des cœurs toutes les secondes
+    setInterval(createHeart, 1000);
+  }
+
+  function addMessage() {
+    const messageInput = document.getElementById('userMessage');
+    const messageText = messageInput.value.trim();
+
+    if (messageText !== "") {
+      displayMessage(messageText);
+
+      let messages = JSON.parse(localStorage.getItem('ghaliaMessages')) || [];
+      messages.push(messageText);
+      localStorage.setItem('ghaliaMessages', JSON.stringify(messages));
+
+      messageInput.value = "";
+    } else {
+      alert("Veuillez écrire un message avant d'envoyer.");
+    }
+  }
+
+  function displayMessage(messageText) {
+    const messageContainer = document.getElementById('messageContainer');
+    const newMessage = document.createElement('div');
+    newMessage.className = 'message';
+    newMessage.innerText = messageText;
+    messageContainer.appendChild(newMessage);
+  }
+
+  // Générer des cœurs flottants
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '💖';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+</script>
+
 </body>
 </html>
