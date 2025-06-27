@@ -3,9 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <title>Galerie de Ghalia 📸</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #ffccd5;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #d63384;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #800f2f;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #800f2f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffccd5;
+      margin-top: 30px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media screen and (min-width: 600px) {
       header h1 {
         font-size: 2.5em;
@@ -30,54 +123,132 @@
       nav a {
         font-size: 5vw;
       }
-    }
-</style>
-<body>
-  <header>
-    <h1>Galerie de souvenirs 📷</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="galerie.html">Galerie</a>
-    </nav>
-  </header>
 
-  <section class="gallery">
-    <img src="WhatsApp Image 2025-06-13 at 16.24.29.jpeg" alt="Souvenir 1">
-    <img src="WhatsApp Image 2025-06-13 at 16.24.32.jpeg" alt="Souvenir 2">
-    <img src="WhatsApp Image 2025-06-13 at 16.24.35.jpeg" alt="Souvenir 3">
-    <img src="WhatsApp Image 2025-06-13 at 16.24.36.jpeg" alt="Souvenir 4">
-    <img src="WhatsApp Image 2025-06-13 a 16.49.47.jpeg" alt="Souvenir 5">
-    <img src="WhatsApp Image 2025-06-13 at 16.49.47.jpeg" alt="Souvenir 6">
-    <!-- Ajoute autant d’images que tu veux -->
-  </section>
-
-   <!-- Lecteur audio caché avec bouton -->
-  <audio id="musique" autoplay loop>
-    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas l’audio HTML5.
-  </audio>
-
-  <div style="text-align:center; margin-top: 20px;">
-    <button onclick="toggleAudio()">🎵 Activer / Couper le son</button>
-  </div>
-
-  <footer>
-    &copy; 2025 Ghalia. Tous droits réservés.
-  </footer>
-
-  <script>
-    function toggleAudio() {
-      const audio = document.getElementById("musique");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
+      button {
+        width: 100%;
       }
     }
-  </script>
-</body>
-</html>
+  </style>
+</head>
 
+<body>
+
+<header>
+  <h1>Galerie de souvenirs 📷</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="galerie.html">Galerie</a>
+  </nav>
+</header>
+
+<section class="gallery" id="gallery">
+  <img src="WhatsApp Image 2025-06-13 at 16.24.29.jpeg" alt="Souvenir 1">
+  <img src="WhatsApp Image 2025-06-13 at 16.24.32.jpeg" alt="Souvenir 2">
+  <img src="WhatsApp Image 2025-06-13 at 16.24.35.jpeg" alt="Souvenir 3">
+</section>
+
+<div style="text-align:center; margin-top: 20px;">
+  <input type="file" id="photoInput" accept="image/*" style="margin-bottom:10px;"><br>
+  <button onclick="addPhoto()">➕ Ajouter une photo</button>
+</div>
+
+<div style="text-align:center; margin-top: 20px;">
+  <button onclick="toggleAudio()">🎵 Activer / Couper le son local</button>
+</div>
+
+<div style="text-align:center; margin-top: 30px;">
+  <label for="spotifyUrl">💖 Choisis ta musique Spotify :</label><br>
+  <input type="text" id="spotifyUrl" placeholder="Colle le lien Spotify ici" style="width: 80%; max-width: 400px; margin-top: 10px;">
+  <br>
+  <button onclick="changerMusique()">🎶 Jouer la musique Spotify</button>
+  <div id="lecteurSpotify" style="margin-top: 20px;"></div>
+</div>
+
+<audio id="musique" autoplay loop>
+  <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+  Votre navigateur ne supporte pas l’audio HTML5.
+</audio>
+
+<footer>
+  &copy; 2025 Ghalia. Tous droits réservés.
+</footer>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById("musique");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Coeurs animés
+  window.onload = function() {
+    setInterval(createHeart, 1000);
+    loadSavedPhotos();
+  }
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = '💖';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  function addPhoto() {
+    const input = document.getElementById('photoInput');
+    const file = input.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const gallery = document.getElementById('gallery');
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        gallery.appendChild(img);
+        savePhoto(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert('Veuillez sélectionner une photo.');
+    }
+  }
+
+  function savePhoto(photoData) {
+    let savedPhotos = JSON.parse(localStorage.getItem('userPhotos')) || [];
+    savedPhotos.push(photoData);
+    localStorage.setItem('userPhotos', JSON.stringify(savedPhotos));
+  }
+
+  function loadSavedPhotos() {
+    let savedPhotos = JSON.parse(localStorage.getItem('userPhotos')) || [];
+    const gallery = document.getElementById('gallery');
+
+    savedPhotos.forEach(photo => {
+      const img = document.createElement('img');
+      img.src = photo;
+      gallery.appendChild(img);
+    });
+  }
+
+  function changerMusique() {
+    const url = document.getElementById('spotifyUrl').value;
+    if (url.includes('spotify.com')) {
+      const embedUrl = url.replace('open.spotify.com', 'open.spotify.com/embed');
+      document.getElementById('lecteurSpotify').innerHTML = `
+        <iframe src="${embedUrl}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      `;
+    } else {
+      alert('Veuillez entrer un lien Spotify valide.');
+    }
+  }
+</script>
 
 </body>
 </html>
